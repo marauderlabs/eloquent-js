@@ -30,7 +30,7 @@ class Group {
     }
 
     add(newItem) {
-        if (!this.content.has(newItem)) {
+        if (!this.has(newItem)) {
             this.content.push(newItem)
         }
     }
