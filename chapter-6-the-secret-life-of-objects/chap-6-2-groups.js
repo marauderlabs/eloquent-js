@@ -35,6 +35,10 @@ class Group {
         }
     }
 
+    get(position) {
+        return this.content[position];
+    }
+
     delete(zap) {
         let index = this.content.findIndex( curItem => curItem === zap );
         if (index != -1) {
@@ -49,14 +53,21 @@ class Group {
     static from(items) {
         return new Group(items)
     }
+    get length() {
+        return this.content.length;
+    }
 }
 
-let group = Group.from([10, 20]);
-console.log(group.has(10));
-// → true
-console.log(group.has(30));
-// → false
-group.add(10);
-group.delete(10);
-console.log(group.has(10));
-// → false
+if (require.main === module) {
+    let group = Group.from([10, 20]);
+    console.log(group.has(10));
+    // → true
+    console.log(group.has(30));
+    // → false
+    group.add(10);
+    group.delete(10);
+    console.log(group.has(10));
+    // → false
+}
+
+module.exports = Group
