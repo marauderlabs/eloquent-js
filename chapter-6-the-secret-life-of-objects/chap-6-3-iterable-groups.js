@@ -16,21 +16,21 @@
 const Group = require("./chap-6-2-groups")
 
 
-class GroupIterator{
-    constructor(group){
+class GroupIterator {
+    constructor(group) {
         this.group = group;
         this.cursor = 0;
     }
-    next(){
+    next() {
         if (this.cursor == this.group.length) {
-            return {done: true}
+            return { done: true }
         }
 
-        return {value: this.group.get(this.cursor++), done: false};
+        return { value: this.group.get(this.cursor++), done: false };
     }
 }
 
-Group.prototype[Symbol.iterator] = function() {
+Group.prototype[Symbol.iterator] = function () {
     return new GroupIterator(this);
 }
 
